@@ -1,0 +1,11 @@
+/*
+Theme Name: U3A Child
+Theme URI: http://u3a.test/
+Description: This is a child theme of 2022
+Author: Vanessa Calimag
+Author URI: http://u3a.test/
+Template: twentytwentytwo
+Version: 0.1
+*/
+
+@import url("../twentytwentytwo/style.css");
