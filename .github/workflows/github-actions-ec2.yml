@@ -15,6 +15,9 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
 
+      - name: Set SSH Key Permissions
+        run: chmod 400 $HOME/.ssh/vagrant.pem
+        
       - name: Debug Workflow Context
         run: |
           echo "GitHub Workspace: $GITHUB_WORKSPACE"
@@ -30,6 +33,5 @@ jobs:
         env:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
-          SSH_PRIVATE_KEY: ${{ secrets.VAGRANT_SSH_KEY }}
         run: |
           ssh -i $HOME/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "ls -la /var/www/html/wp-content/themes/twentytwentytwo-child"
