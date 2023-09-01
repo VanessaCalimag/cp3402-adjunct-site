@@ -17,11 +17,14 @@ jobs:
 
       - name: Set SSH Key Permissions
         run: |
-          echo "${{ secrets.VAGRANT_SSH_KEY }}" > ~/.ssh/vagrant.pem
-          chmod 400 ~/.ssh/vagrant.pem
+          echo "${{ secrets.VAGRANT_SSH_KEY }}" > $HOME/.ssh/vagrant.pem
+          chmod 400 $HOME/.ssh/vagrant.pem
 
-      - name: List files in .ssh directory
-        run: ls /home/runner/.ssh/
+      - name: Create ~/.ssh directory if not exists
+        run: mkdir -p ~/.ssh
+
+      - name: Debug SSH Key Content
+        run: echo "${{ secrets.VAGRANT_SSH_KEY }}"
 
       - name: Deploy to AWS instance
         env:
