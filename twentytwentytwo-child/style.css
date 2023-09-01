@@ -15,8 +15,11 @@ Version: 0.1
     font-style: normal;
     font-weight: bold;
     font-size: xx-large;
-    text-decoration: none;
 }    
+
+a:where(:not(.wp-element-button)) {
+    text-decoration: none;
+}
 
 /*Header styling*/
 :where(.wp-site-blocks) > :first-child:first-child {
@@ -38,4 +41,25 @@ Version: 0.1
 /*Remove block separator*/
 .wp-block-separator {
     display: none;
+}
+
+.wp-block-spacer {
+    height: 20px;
+}
+
+.has-text-align-center {
+    text-align: justify;
+}
+
+/*Footer margin*/
+:where(.wp-site-blocks) > :last-child:last-child {
+    margin-block-start: 0;
+    background-color: lightblue;
+    padding-left: inherit;
+    padding-right: inherit;
+}
+
+body .is-layout-constrained > .alignwide {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
