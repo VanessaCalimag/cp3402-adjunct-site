@@ -15,10 +15,17 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
 
+      - name: Install curl
+        run: sudo apt-get update && sudo apt-get install -y curl
+
       - name: Set permissions for SSH private key
         run: |
           echo "${{ secrets.EC2_SSH_KEY }}" > ssh_key.pem
           chmod 600 ssh_key.pem
+
+      - name: Download functions.php
+        run: |
+          curl -o twentytwentytwo-child/functions.php https://raw.githubusercontent.com/VanessaCalimag/cp3402-adjunct-site/master/twentytwentytwo-child/functions.php
 
       - name: Deploy to AWS instance
         env:
@@ -29,3 +36,4 @@ jobs:
           echo "${{ secrets.EC2_SSH_KEY }}" > ssh_key.pem
           chmod 600 ssh_key.pem
           ssh -i ssh_key.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/style.css /var/www/html/wp-content/themes/twentytwentytwo-child/style.css"
+          ssh -i ssh_key.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/functions.php /var/www/html/wp-content/themes/twentytwentytwo-child/functions.php"
