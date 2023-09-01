@@ -27,4 +27,4 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
         run: |
           ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/style.css /var/www/html/wp-content/themes/twentytwentytwo-child/style.css"
-          ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/style.css /var/www/html/wp-content/themes/twentytwentytwo-child/functions.php"
+          ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/functions.php /var/www/html/wp-content/themes/twentytwentytwo-child/functions.php"
