@@ -15,10 +15,8 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
 
-      - name: Set permissions for SSH private key
-        run: |
-          echo "${{ secrets.EC2_SSH_KEY }}" > ssh_key.pem
-          chmod 600 ssh_key.pem
+      - name: Set SSH Key Permissions
+        run: chmod 400 ssh_key.pem
 
       - name: Deploy to AWS instance
         env:
