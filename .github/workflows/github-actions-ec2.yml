@@ -15,17 +15,16 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
 
-      - name: Set permissions for SSH private key
+      - name: Set SSH Key Permissions
         run: |
-          echo "${{ secrets.EC2_SSH_KEY }}" > ssh_key.pem
-          chmod 600 ssh_key.pem
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VAGRANT_SSH_KEY }}" > ~/.ssh/vagrant.pem
+          chmod 400 ~/.ssh/vagrant.pem
 
       - name: Deploy to AWS instance
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
         run: |
-          echo "${{ secrets.EC2_SSH_KEY }}" > ssh_key.pem
-          chmod 600 ssh_key.pem
-          ssh -i ssh_key.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/style.css /var/www/html/wp-content/themes/twentytwentytwo-child/style.css"
+          ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/style.css /var/www/html/wp-content/themes/twentytwentytwo-child/style.css"
+          ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/style.css /var/www/html/wp-content/themes/twentytwentytwo-child/functions.php"
