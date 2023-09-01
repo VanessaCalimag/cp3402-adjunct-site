@@ -29,4 +29,8 @@ jobs:
           echo "${{ secrets.EC2_SSH_KEY }}" > ssh_key.pem
           chmod 600 ssh_key.pem
           ssh -i ssh_key.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/style.css /var/www/html/wp-content/themes/twentytwentytwo-child/style.css"
-          ssh -i ssh_key.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/functions.php /var/www/html/wp-content/themes/twentytwentytwo-child/functions.php"
+
+      - name: Test SSH Connection
+        run: ssh -i ssh_key.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "echo 'SSH connection successful'"
+
+      
