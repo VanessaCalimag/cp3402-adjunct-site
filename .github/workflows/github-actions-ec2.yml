@@ -20,6 +20,9 @@ jobs:
           echo "${{ secrets.VAGRANT_SSH_KEY }}" > ~/.ssh/vagrant.pem
           chmod 400 ~/.ssh/vagrant.pem
 
+      - name: List files in .ssh directory
+        run: ls /home/runner/.ssh/
+
       - name: Deploy to AWS instance
         env:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
