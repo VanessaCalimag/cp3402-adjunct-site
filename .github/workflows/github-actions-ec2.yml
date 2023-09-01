@@ -15,23 +15,16 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
 
-      - name: Set SSH Key Permissions
-        run: chmod 400 $HOME/.ssh/vagrant.pem
-        
-      - name: Debug Workflow Context
+      - name: Set permissions for SSH private key
         run: |
-          echo "GitHub Workspace: $GITHUB_WORKSPACE"
-          echo "GitHub Ref: $GITHUB_REF"
-          echo "GitHub SHA: $GITHUB_SHA"
-          ls -la $GITHUB_WORKSPACE
-
-      - name: List files in GitHub Repo
-        run: |
-          ls -la $GITHUB_WORKSPACE/twentytwentytwo-child
+          echo "${{ secrets.VAGRANT_SSH_KEY }}" > vagrant.pem
+          chmod 600 vagrant.pem
 
       - name: Deploy to AWS instance
         env:
+          SSH_PRIVATE_KEY: ${{ secrets.VAGRANT_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
         run: |
-          ssh -i $HOME/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "ls -la /var/www/html/wp-content/themes/twentytwentytwo-child"
+          scp -i vagrant.pem -o StrictHostKeyChecking=no twentytwentytwo-child/style.css $REMOTE_USER@$REMOTE_HOST:/var/www/html/wp-content/themes/twentytwentytwo-child/style.css
+          scp -i vagrant.pem -o StrictHostKeyChecking=no twentytwentytwo-child/functions.php $REMOTE_USER@$REMOTE_HOST:/var/www/html/wp-content/themes/twentytwentytwo-child/functions.php
