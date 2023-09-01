@@ -21,11 +21,33 @@ a:where(:not(.wp-element-button)) {
     text-decoration: none;
 }
 
-/*Header styling*/
-:where(.wp-site-blocks) > :first-child:first-child {
-    background-color: lightblue;
+/*Site block styling*/
+.wp-site-blocks header {
+    background: white;
     padding-left: inherit;
     padding-right: inherit;
+}
+.wp-site-blocks main {
+    background: white;
+    margin-top: 0px;
+}
+.wp-site-blocks footer {
+    background: white;
+    padding-left: 0px !IMPORTANT;
+    padding-right: 0px !IMPORTANT;
+}
+body {
+    background: red;
+}
+
+/*Header and footer padding*/
+header .wp-block-group.alignwide {
+    padding-bottom: 20px !IMPORTANT;
+    padding-top: 20px !IMPORTANT;
+}
+footer .wp-block-group.alignwide {
+    padding-bottom: 20px !IMPORTANT;
+    padding-top: 20px !IMPORTANT;
 }
 
 /*Navigation font style*/
@@ -35,31 +57,13 @@ a:where(:not(.wp-element-button)) {
 
 /*Hide page title*/
 .wp-block-post-title {
-    display: none;
-}
-
-/*Remove block separator*/
-.wp-block-separator {
-    display: none;
+    display: inherit;
 }
 
 .wp-block-spacer {
-    height: 20px;
+    height: 1px;
 }
 
 .has-text-align-center {
     text-align: justify;
-}
-
-/*Footer margin*/
-:where(.wp-site-blocks) > :last-child:last-child {
-    margin-block-start: 0;
-    background-color: lightblue;
-    padding-left: inherit;
-    padding-right: inherit;
-}
-
-body .is-layout-constrained > .alignwide {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
 }
