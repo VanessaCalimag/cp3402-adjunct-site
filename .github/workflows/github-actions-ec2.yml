@@ -27,6 +27,3 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
         run: |
           ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/style.css /var/www/html/wp-content/themes/twentytwentytwo-child/style.css"
-
-      - name: Test SSH Connection
-        run: ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "echo 'SSH connection successful'"
