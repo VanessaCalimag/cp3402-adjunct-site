@@ -15,33 +15,22 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
 
+      - name: Create SSH Directory
+        run: mkdir -p $HOME/.ssh
+
       - name: Set SSH Key Permissions
-        run: |
-          echo "${{ secrets.VAGRANT_SSH_KEY }}" > $HOME/.ssh/vagrant.pem
-          chmod 400 $HOME/.ssh/vagrant.pem
+        run: echo "${{ secrets.VAGRANT_SSH_KEY }}" > $HOME/.ssh/vagrant.pem && chmod 400 $HOME/.ssh/vagrant.pem
 
-      - name: Create ~/.ssh directory if not exists
-        run: mkdir -p ~/.ssh
+      - name: Debug SSH Key File
+        run: cat $HOME/.ssh/vagrant.pem
 
-      - name: Debug SSH Key Content
-        run: echo "${{ secrets.VAGRANT_SSH_KEY }}"
+      - name: List files in .ssh directory
+        run: ls $HOME/.ssh/
 
       - name: Deploy to AWS instance
         env:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
         run: |
-          if ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/style.css /var/www/html/wp-content/themes/twentytwentytwo-child/style.css"; then
-            echo "Deployment of style.css successful"
-          else
-            echo "Error: Deployment of style.css failed"
-            exit 1
-          fi
-    
-          if ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/functions.php /var/www/html/wp-content/themes/twentytwentytwo-child/functions.php"; then
-            echo "Deployment of functions.php successful"
-          else
-            echo "Error: Deployment of functions.php failed"
-            exit 1
-          fi
-
+          ssh -i $HOME/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/style.css /var/www/html/wp-content/themes/twentytwentytwo-child/style.css"
+          ssh -i $HOME/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/functions.php /var/www/html/wp-content/themes/twentytwentytwo-child/functions.php"
