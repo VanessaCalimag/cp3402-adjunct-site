@@ -26,5 +26,6 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
         run: |
-          rsync -av -e "ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no" twentytwentytwo-child/ $REMOTE_USER@$REMOTE_HOST:/var/www/html/wp-content/themes/twentytwentytwo-child/
+          sudo rsync -av -e "ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no" twentytwentytwo-child/ $REMOTE_USER@$REMOTE_HOST:/var/www/html/wp-content/themes/twentytwentytwo-child/
+
  
