@@ -28,5 +28,17 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
         run: |
-          ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/style.css /var/www/html/wp-content/themes/twentytwentytwo-child/style.css"
-          ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/functions.php /var/www/html/wp-content/themes/twentytwentytwo-child/functions.php"
+          if ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/style.css /var/www/html/wp-content/themes/twentytwentytwo-child/style.css"; then
+            echo "Deployment of style.css successful"
+          else
+            echo "Error: Deployment of style.css failed"
+            exit 1
+          fi
+    
+          if ssh -i ~/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp twentytwentytwo-child/functions.php /var/www/html/wp-content/themes/twentytwentytwo-child/functions.php"; then
+            echo "Deployment of functions.php successful"
+          else
+            echo "Error: Deployment of functions.php failed"
+            exit 1
+          fi
+
