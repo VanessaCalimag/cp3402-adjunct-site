@@ -30,5 +30,6 @@ jobs:
         env:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.VAGRANT_SSH_KEY }}
         run: |
           ssh -i $HOME/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "ls -la /var/www/html/wp-content/themes/twentytwentytwo-child"
