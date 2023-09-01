@@ -15,26 +15,20 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
 
-      - name: Create SSH Directory
-        run: mkdir -p $HOME/.ssh
-
-      - name: Set SSH Key Permissions
-        run: echo "${{ secrets.VAGRANT_SSH_KEY }}" > $HOME/.ssh/vagrant.pem && chmod 400 $HOME/.ssh/vagrant.pem
-
-      - name: Debug SSH Key File
-        run: cat $HOME/.ssh/vagrant.pem
-
-      - name: List files in .ssh directory
-        run: ls $HOME/.ssh/
-
-      - name: Download style.css
+      - name: Debug Workflow Context
         run: |
-          curl -o style.css https://raw.githubusercontent.com/VanessaCalimag/cp3402-adjunct-site/master/twentytwentytwo-child/style.css
+          echo "GitHub Workspace: $GITHUB_WORKSPACE"
+          echo "GitHub Ref: $GITHUB_REF"
+          echo "GitHub SHA: $GITHUB_SHA"
+          ls -la $GITHUB_WORKSPACE
+
+      - name: List files in GitHub Repo
+        run: |
+          ls -la $GITHUB_WORKSPACE/twentytwentytwo-child
 
       - name: Deploy to AWS instance
         env:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
         run: |
-          ssh -i $HOME/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo cp style.css /var/www/html/wp-content/themes/twentytwentytwo-child/style.css"
-
+          ssh -i $HOME/.ssh/vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "ls -la /var/www/html/wp-content/themes/twentytwentytwo-child"
