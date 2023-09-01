@@ -10,6 +10,7 @@ Version: 0.1
 
 @import url("../twentytwentytwo/style.css");
 
-body {
-  background-color: lightblue;
-}
+.wp-block-site-title {
+    font-style: normal;
+    font-weight: bold;
+}    
