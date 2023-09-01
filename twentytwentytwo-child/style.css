@@ -10,7 +10,32 @@ Version: 0.1
 
 @import url("../twentytwentytwo/style.css");
 
+/*Site title*/
 .wp-block-site-title {
     font-style: normal;
     font-weight: bold;
+    font-size: xx-large;
+    text-decoration: none;
 }    
+
+/*Header styling*/
+:where(.wp-site-blocks) > :first-child:first-child {
+    background-color: lightblue;
+    padding-left: inherit;
+    padding-right: inherit;
+}
+
+/*Navigation font style*/
+.wp-block-navigation ul {
+    font-weight: 500;
+}
+
+/*Hide page title*/
+.wp-block-post-title {
+    display: none;
+}
+
+/*Remove block separator*/
+.wp-block-separator {
+    display: none;
+}
