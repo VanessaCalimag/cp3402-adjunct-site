@@ -20,9 +20,10 @@ jobs:
           echo "${{ secrets.EC2_SSH_KEY }}" > ssh_key.pem
           chmod 600 ssh_key.pem
 
-      - name: Deploy to vagrant-aws
-        uses: easingthemes/ssh-deploy@main
+      - name: Deploy to AWS instance
         env:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
+        run: |
+          scp -i ssh_key.pem -o StrictHostKeyChecking=no style.css $REMOTE_USER@$REMOTE_HOST:/var/www/html/wp-content/themes/twentytwentytwo-child/style.css
