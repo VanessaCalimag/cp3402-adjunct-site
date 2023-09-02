@@ -29,20 +29,23 @@ a:where(:not(.wp-element-button)) {
 }
 .wp-site-blocks main {
     background: white;
-    margin-top: 0px;
+    margin-top: 0;
+    padding-bottom: 20px !IMPORTANT;
 }
 .wp-site-blocks footer {
     background: white;
     padding-left: 0px !IMPORTANT;
     padding-right: 0px !IMPORTANT;
+    padding-top: 0px !IMPORTANT;
+    margin-top: 0;
 }
 body {
-    background: red;
+    background: RoyalBlue;
 }
 
 /*Header and footer padding*/
 header .wp-block-group.alignwide {
-    padding-bottom: 20px !IMPORTANT;
+    padding-bottom: 50px !IMPORTANT;
     padding-top: 20px !IMPORTANT;
 }
 footer .wp-block-group.alignwide {
@@ -57,13 +60,13 @@ footer .wp-block-group.alignwide {
 
 /*Hide page title*/
 .wp-block-post-title {
-    display: inherit;
-}
-
-.wp-block-spacer {
-    height: 1px;
+    display: none;
 }
 
 .has-text-align-center {
     text-align: justify;
+}
+
+.wp-block-separator {
+    display: none; 
 }
