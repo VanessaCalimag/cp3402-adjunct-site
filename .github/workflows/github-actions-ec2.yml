@@ -28,4 +28,4 @@ jobs:
         run: |
           ssh -i vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo curl -o /var/www/html/wp-content/themes/twentytwentytwo-child/style.css https://raw.githubusercontent.com/VanessaCalimag/cp3402-adjunct-site/master/twentytwentytwo-child/style.css"
           ssh -i vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo curl -o /var/www/html/wp-content/themes/twentytwentytwo-child/functions.php https://raw.githubusercontent.com/VanessaCalimag/cp3402-adjunct-site/master/twentytwentytwo-child/functions.php"
-          ssh -i vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo curl -o /var/www/html/wp-content/themes/twentytwentytwo-child/ https://raw.githubusercontent.com/VanessaCalimag/cp3402-adjunct-site/master/twentytwentytwo-child/"
+          
