@@ -42,7 +42,7 @@ Addition Site Pages
 
 ### General Workflow
 1. Local Development Environment Setup
-   Varying Vagrant Vagrants is primarily chosen due to its preconfigured services such as Nginx, PHP, and MariaDB (or MySQL) that are commonly used in WordPress hosting environments. These services are set up to work optimally with WordPress.
+Varying Vagrant Vagrants is primarily chosen due to its preconfigured services such as Nginx, PHP, and MariaDB (or MySQL) that are commonly used in WordPress hosting environments. These services are set up to work optimally with WordPress.
    - Prerequisite Installations: Vagrant, Git, Virtual Box 
    - Grab a copy of VVV using git
       - Open a command prompt, and enter the following command:
@@ -64,7 +64,7 @@ Addition Site Pages
 Visit the official website in [Varying Vagrant Vagrants](https://varyingvagrantvagrants.org/) for detailed instructions of VVV installation.
 
 2. Website Migration using WPVivid Plugin
-   Note: WPVivid Plugin must be installed and activated on both local and production WordPress
+Note: WPVivid Plugin must be installed and activated on both local and production WordPress
    - On the Target (New) Website:
       - Generate Key from the Key tab
       - Copy the key
@@ -77,7 +77,7 @@ Visit the official website in [Varying Vagrant Vagrants](https://varyingvagrantv
       - Click restore
 
 3. Version Control
-   Version control workflow in Github involves tracking and managing changes to the code and collaborating with others effectively.
+Version control workflow in Github involves tracking and managing changes to the code and collaborating with others effectively.
    - Initialize a version control system (e.g., Git) within your VVV project directory if it's not already initialized. 
       - Run the following commands to clone the repository `git clone https://github.com/VanessaCalimag/cp3402-adjunct-site.git`
    - Link the local repository to the GitHub repository:
