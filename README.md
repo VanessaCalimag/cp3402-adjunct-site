@@ -103,7 +103,8 @@ Set up:
      - Run `vagrant box add aws/dummy dummy.box`
    - Setup environment variables for AWS_ACCESS_KEY & AWS_SECRET_KEY
    - Setup the Vagrantfile
-   ```VAGRANTFILE_API_VERSION = "2"
+   ```
+      VAGRANTFILE_API_VERSION = "2"
       require 'vagrant-aws'
 
       Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
