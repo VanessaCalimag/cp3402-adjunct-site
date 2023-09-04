@@ -124,7 +124,7 @@ Set up:
             override.ssh.username = 'ubuntu'
             override.ssh.private_key_path = '.ssh/vagrant.pem'
          end # config.vm.provider 'aws'
-      end # Vagrant.configure```
+      end # Vagrant.configure
 8. Launch the Instance in AWS
    - Launch the instance using `vagrant up` in command prompt
    - Login to the instance using `vagrant ssh`
@@ -160,3 +160,15 @@ Note: WPVivid Plugin must be installed and activated on both local and productio
 3. On the Target (New) Website:
    - From Backup &Restore tab click 'scan uploaded backup or received backup'
    - Click restore
+
+### General Workflow
+Local Development Environment Setup
+   - Ensure you have a local development environment set up on computer
+   - Migrate the live website on local computer
+   - Clone the repository of your project
+Version Control
+   - Commit your changes to your version control system
+   - Push your changes to a remote repository
+Monitor and Test
+   - After deploying to the production server, closely monitor website for any issues or errors
+   - Test the live site to ensure that it functions as expected and that there are no broken links and missing assets
