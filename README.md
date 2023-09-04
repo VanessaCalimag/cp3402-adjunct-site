@@ -40,23 +40,90 @@ Addition Site Pages
 - Deployment Workflow: `GitHub Actions`
 - Website Migration: `WPVivid Plugin`
 
-### Local Environment 
-Varying Vagrant Vagrants is primarily chosen due to its preconfigured services such as Nginx, PHP, and MariaDB (or MySQL) that are commonly used in WordPress hosting environments. These services are set up to work optimally with WordPress.
-
-Set up:
-1. Prerequisite Installations: Vagrant, Git, Virtual Box 
-2. Grab a copy of VVV using git
-   - Open a command prompt, and enter the following command:
-     `git clone -b stable https://github.com/Varying-Vagrant-Vagrants/VVV.git %systemdrive%%homepath%/vvv-local cd %systemdrive%%homepath%/vvv-local`
-     `vagrant plugin install --local`
-   - Start VVV by opening a terminal
-   - Change to the VVV folder `cd %systemdrive%%homepath%/vvv-local`
-   - Run `vagrant up`
-3. Find the [Dashboard](http://vvv.test)
-4. Websites will be in the `www` folder
+### General Workflow
+1. Local Development Environment Setup
+   Varying Vagrant Vagrants is primarily chosen due to its preconfigured services such as Nginx, PHP, and MariaDB (or MySQL) that are commonly used in WordPress hosting environments. These services are set up to work optimally with WordPress.
+   - Prerequisite Installations: Vagrant, Git, Virtual Box 
+   - Grab a copy of VVV using git
+      - Open a command prompt, and enter the following command:
+      - `git clone -b stable https://github.com/Varying-Vagrant-Vagrants/VVV.git %systemdrive%%homepath%/vvv-local cd %systemdrive%%homepath%/vvv-local`
+      - `vagrant plugin install --local`
+      - Start VVV by opening a terminal
+      - Change to the VVV folder `cd %systemdrive%%homepath%/vvv-local`
+      - Run `vagrant up`
+   - Launch [Dashboard](http://vvv.test) from a web broser
+   - Websites will be in the `www` folder
+   - Add a new site in `config/config.yml` and run `vagrant up --provision` to reprovision
+   ```
+      sites:
+         example:
+            repo: https://github.com/Varying-Vagrant-Vagrants/custom-site-template.git
+            hosts:
+               - u3a.test
 
 Visit the official website in [Varying Vagrant Vagrants](https://varyingvagrantvagrants.org/) for detailed instructions of VVV installation.
 
+2. Website Migration using WPVivid Plugin
+   Note: WPVivid Plugin must be installed and activated on both local and production WordPress
+   - On the Target (New) Website:
+      - Generate Key from the Key tab
+      - Copy the key
+   - On the Source (Original) Website:
+      - Paste the key to the space provided under Auto-Migration tab and save
+      - Click on 'Clone the Transfer'
+      - Wait until file/s are ready
+   - On the Target (New) Website:
+      - From Backup &Restore tab click 'scan uploaded backup or received backup'
+      - Click restore
+
+3. Version Control
+   Version control workflow in Github involves tracking and managing changes to the code and collaborating with others effectively.
+   - Initialize a version control system (e.g., Git) within your VVV project directory if it's not already initialized. 
+      - Run the following commands to clone the repository `git clone https://github.com/VanessaCalimag/cp3402-adjunct-site.git`
+   - Link the local repository to the GitHub repository:
+      - `git remote add origin <repository_url>`
+      - `git branch -M master`
+      - `git push -u origin master`
+   - To commit your changes using Git:
+      - `git add .`
+      - `git commit -m "Description of changes"`
+
+### Automatic Workflow
+GitHub Actions leveraged secret management for secure handling of sensitive information, 
+   - SSH keys and server credentials within the project's repository [SECRET KEYS](https://github.com/VanessaCalimag/cp3402-adjunct-site/settings/secrets/actions).
+      - `HOST_DNS`, `USERNAME`, `VAGRANT_SSH_KEY`
+   - Customized workflow file to manage the deployment process
+   ```
+      name: Push-to-EC2
+
+      on:
+         push:
+            branches:
+               - master
+
+      jobs:
+         deploy:
+            name: Deploy to EC2 on master branch push
+            runs-on: ubuntu-latest
+
+            steps:
+               - name: Checkout the files
+               uses: actions/checkout@v2
+
+               - name: Set permissions for SSH private key
+               run: |
+                  echo "${{ secrets.VAGRANT_SSH_KEY }}" > vagrant.pem
+                  chmod 600 vagrant.pem
+
+               - name: Deploy to AWS instance
+               env:
+                  SSH_PRIVATE_KEY: ${{ secrets.VAGRANT_SSH_KEY }}
+                  REMOTE_HOST: ${{ secrets.HOST_DNS }}
+                  REMOTE_USER: ${{ secrets.USERNAME }}
+               run: |
+                  ssh -i vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo curl -o /var/www/html/wp-content/themes/twentytwentytwo-child/style.css https://raw.githubusercontent.com/VanessaCalimag/cp3402-adjunct-site/master/twentytwentytwo-child/style.css"
+                  ssh -i vagrant.pem -o StrictHostKeyChecking=no $REMOTE_USER@$REMOTE_HOST "sudo curl -o /var/www/html/wp-content/themes/twentytwentytwo-child/functions.php https://raw.githubusercontent.com/VanessaCalimag/cp3402-adjunct-site/master/twentytwentytwo-child/functions.php"
+          
 ### Production Environment
 Vagrant possesses the capability to oversee various machine types beyond its default functionality. This is achieved by integrating additional providers with Vagrant such as AWS.
 
@@ -133,42 +200,3 @@ Set up:
 Trello - collaboration tool that uses a system of boards, lists, and cards to help the team organize and manage tasks and projects.
 
 Register to [Trello](https://trello.com/home) and join the team to get access to the board detailing the project/s.
-
-### Version Control
-Version control workflow in Github involves tracking and managing changes to the code and collaborating with others effectively.
-
-Set up:
-1. Initialize a version control system (e.g., Git) within your VVV project directory if it's not already initialized. Run the following commands to clone the repository `git clone https://github.com/VanessaCalimag/cp3402-adjunct-site.git`
-2. Link the local repository to the GitHub repository:
-   - `git remote add origin <repository_url>`
-   - `git branch -M master`
-   - `git push -u origin master`
-3. To commit your changes using Git:
-   - `git add .`
-   - `git commit -m "Description of changes"`
-
-### Website Migration: WPVivid Plugin
-Note: WPVivid Plugin must be installed and activated on both local and production WordPress
-
-1. On the Target (New) Website:
-   - Generate Key from the Key tab
-   - Copy the key
-2. On the Source (Original) Website:
-   - Paste the key to the space provided under Auto-Migration tab and save
-   - Click on 'Clone the Transfer'
-   - Wait until file/s are ready
-3. On the Target (New) Website:
-   - From Backup &Restore tab click 'scan uploaded backup or received backup'
-   - Click restore
-
-### General Workflow
-Local Development Environment Setup
-   - Ensure you have a local development environment set up on computer
-   - Migrate the live website on local computer
-   - Clone the repository of your project
-Version Control
-   - Commit your changes to your version control system
-   - Push your changes to a remote repository
-Monitor and Test
-   - After deploying to the production server, closely monitor website for any issues or errors
-   - Test the live site to ensure that it functions as expected and that there are no broken links and missing assets
