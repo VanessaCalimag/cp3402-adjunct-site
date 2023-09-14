@@ -40,7 +40,7 @@ a:where(:not(.wp-element-button)) {
     margin-top: 0;
 }
 body {
-    background: RoyalBlue;
+    background: red;
 }
 
 /*Header and footer padding*/
