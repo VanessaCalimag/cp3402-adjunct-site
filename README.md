@@ -41,7 +41,7 @@ Addition Site Pages
 - Website Migration: `WPVivid Plugin`
 
 ### General Workflow
-1. Local Development Environment Setup
+1. Local Development Environment Setup (Windows Only)
 - Varying Vagrant Vagrants is primarily chosen due to its preconfigured services such as Nginx, PHP, and MariaDB (or MySQL) that are commonly used in WordPress hosting environments. These services are set up to work optimally with WordPress.
    - Prerequisite Installations: Vagrant, Git, Virtual Box 
    - Grab a copy of VVV using git
@@ -51,39 +51,37 @@ Addition Site Pages
       - Start VVV by opening a terminal
       - Change to the VVV folder `cd %systemdrive%%homepath%/vvv-local`
       - Run `vagrant up`
-   - Launch [Dashboard](http://vvv.test) from a web broser
-   - Websites will be in the `www` folder
    - Add a new site in `config/config.yml` and run `vagrant up --provision` to reprovision
    ```
       sites:
-         example:
+         u3a:
+            skip_provisioning: false
             repo: https://github.com/Varying-Vagrant-Vagrants/custom-site-template.git
             hosts:
                - u3a.test
 
-Visit the official website in [Varying Vagrant Vagrants](https://varyingvagrantvagrants.org/) for detailed instructions of VVV installation.
+- Run `vagrant up --provision`
+- Launch [Dashboard](http://vvv.test) from a web broser
+- Websites will be in the `www` folder
+
+Visit the official website in [Varying Vagrant Vagrants](https://varyingvagrantvagrants.org/) for detailed instructions of VVV installation for MAC users.
 
 2. Website Migration using WPVivid Plugin
-- Note: WPVivid Plugin must be installed and activated on both local and production WordPress
-   - On the Target (New) Website:
-      - Generate Key from the Key tab
-      - Copy the key
-   - On the Source (Original) Website:
-      - Paste the key to the space provided under Auto-Migration tab and save
-      - Click on 'Clone the Transfer'
-      - Wait until file/s are ready
-   - On the Target (New) Website:
-      - From Backup &Restore tab click 'scan uploaded backup or received backup'
-      - Click restore
+- Note: WPVivid Plugin must be installed and activated on both local and production WordPress site
+   - On the Source (Production) Website:
+      - From the `Backup & Restore` tab click on the `Backup Now` button 
+      - Download the generated backup file
+   - On the Target (Local) Website:
+      - From the `Backup & Restore` tab, click on the `Upload` tab
+      - Select the downloaded backup file
+      - Click `Backups` tab
+      - Click `Restore` icon
+      - Click `Restore` button and wait for process to complete
 
 3. Version Control
 - Version control workflow in Github involves tracking and managing changes to the code and collaborating with others effectively.
    - Initialize a version control system (e.g., Git) within your VVV project directory if it's not already initialized. 
       - Run the following commands to clone the repository `git clone https://github.com/VanessaCalimag/cp3402-adjunct-site.git`
-   - Link the local repository to the GitHub repository:
-      - `git remote add origin <repository_url>`
-      - `git branch -M master`
-      - `git push -u origin master`
    - To commit your changes using Git:
       - `git add .`
       - `git commit -m "Description of changes"`
