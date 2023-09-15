@@ -26,12 +26,12 @@ Footer Customization
 - Incorporated search function and social media integration
 
 ### Continued Development
-Addition Site Pages
-- Newsletter -> used a plugin that enables to do Newsletter subscription but can use a better plugin to incorporate actual Newsletter pages
+Additional Site Pages
+- Newsletter -> used a plugin that enables Newsletter subscription but can use a better plugin to incorporate actual Newsletter pages
 
 - Forum for enhanced user engagement -> explore other suitable plugin as there are too many unnecessary details on the current extension
 
-- Separate the Strategies of the website and link to a `sponsorship` page or button
+- Separate the `strategies` of the website from About page and link to a `sponsorship` page or button
 
 ## Deployment Workflow
 
