@@ -11,6 +11,9 @@ Intuitive
 - The objective for the theme is to design a straightforward user interface that facilitates effortless navigation, resulting in a user-friendly and intuitive experience.
 - The theme utilizes large font sizes to ensure the website is readable by the targeted audience.
 
+Custom logo
+- A personalized logo that can be incorporated into the header. It can be configured and tailored via the site identity settings.
+
 Page Customization
 - Ability to modify the layout, structure, and visual elements of a page.
 - Customize the visual style of a page, such as colors, fonts, typography, and spacing.
@@ -19,15 +22,16 @@ Page Customization
 Header Customization
 - A main navigation menu can be placed in the header location suitable for intended audience.
 
-### Continued Development
-Footer Navigation
-- Can add secondary navigation menu in the footer by registering a new navigation menu in the theme's functions.php file
+Footer Customization
+- Incorporated search function and social media integration
 
+### Continued Development
 Addition Site Pages
-- Header and Footer -> unable to further customize even after adding template parts from the parent theme due to limitations in the parent theme:
-  - Suggested solution: add own code files and .json in the child-theme (theme.json)
-- Newsletter -> explore different plugins suitable for the website 
-- Forum for enhanced user engagement -> explore different plugins suitable for the website
+- Newsletter -> used a plugin that enables to do Newsletter subscription but can use a better plugin to incorporate actual Newsletter pages
+
+- Forum for enhanced user engagement -> explore other suitable plugin as there are too many unnecessary details on the current extension
+
+- Separate the Strategies of the website and link to a `sponsorship` page or button
 
 ## Deployment Workflow
 

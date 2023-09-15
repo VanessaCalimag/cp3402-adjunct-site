@@ -18,6 +18,12 @@ Version: 0.1
     font-size: xx-large;
 }  
 
+.wp-block-site-title .wp-block-site-title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: xx-large;
+}  
+
 .wp-block-navigation__responsive-container {
     font-size: inherit;
     font-weight: 600;
