@@ -24,5 +24,41 @@ Version: 0.1
 }
 
 .wp-site-blocks header {
-    background-color: peru;
+    background-color: #F6F6F6;
+}
+
+.forminator-ui#forminator-module-177.forminator-design--default .forminator-button-submit {
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 480;
+    background-color: #1a4548;
+}
+
+.forminator-ui#forminator-module-163.forminator-design--default .forminator-button-submit {
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 480;
+    background-color: #1a4548;
+}
+
+.forminator-ui#forminator-module-162.forminator-design--default .forminator-button-submit {
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 480;
+    background-color: #1a4548;
+}
+
+.forminator-ui#forminator-module-162.forminator-design--default .forminator-multi-upload .forminator-multi-upload-message p a {
+    color: #006ba1;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.bp-contact-card {
+    font-style: normal;
+    max-width: none;
+}
+
+.bp-opening-hours {
+    max-width: 40em;
 }
