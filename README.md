@@ -27,7 +27,7 @@ Footer Customization
 
 ### Continued Development
 Additional Site Pages
-- Newsletter -> used a plugin that enables Newsletter subscription but can use a better plugin to incorporate actual Newsletter pages
+- Newsletter -> currently using Forminator plugin that enables Newsletter subscription but can use a better plugin to incorporate actual Newsletter pages
 
 - Forum for enhanced user engagement -> explore other suitable plugin as there are too many unnecessary details on the current extension
 
@@ -90,7 +90,7 @@ Visit the official website in [Varying Vagrant Vagrants](https://varyingvagrantv
       - `git add .`
       - `git commit -m "Description of changes"`
 
-### Automatic Workflow
+### Automatic Workflow/Deployment
 - GitHub Actions leveraged secret management for secure handling of sensitive information, 
    - SSH keys and server credentials within the project's repository [SECRET KEYS](https://github.com/VanessaCalimag/cp3402-adjunct-site/settings/secrets/actions).
       - `HOST_DNS`, `USERNAME`, `VAGRANT_SSH_KEY`
