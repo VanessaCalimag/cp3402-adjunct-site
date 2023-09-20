@@ -32,10 +32,16 @@ Page Customization
 	- Change the background color
 
 Header Customization
-- A main navigation menu can be placed in the header location suitable for intended audience.
+- A main navigation menu can be placed in the header location suitable for intended audience. It can be customized under the theme's appearance in navigation section.
+   - Click navigation menu > edit button
+	- From block settings > rearrange or add new menu
 
 Footer Customization
-- Incorporated search function and social media integration
+- Incorporated search function and social media integration.
+   - Ability to change social media name to brand icon
+      - Download and upload Facebook and Instagram icons
+	   - From theme's appearance > templates > pages > edit icon
+	   - Locate footer > Delete name > upload downloaded icons
 
 ### Continued Development
 Additional Site Pages
