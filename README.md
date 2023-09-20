@@ -44,12 +44,19 @@ Footer Customization
 	   - Locate footer > Delete name > upload downloaded icons
 
 ### Continued Development
+Login and Register Buttons
+- Part of navigation menu in the header section -> to create 2 separate buttons for each form. It can be customized under the theme's appearance in templates section.
+   - Navigate to pages > edit button
+	- Add block for buttons > move block on top of the header 
+	- Customize name > add the links of the login and register pages
+
 Additional Site Pages
 - Newsletter -> currently using Forminator plugin that enables Newsletter subscription but can use a better plugin to incorporate actual Newsletter pages
+   [!NOTE]: Ongoing testing with newsletter creation and verification if subscribers are receiveing the notification
 
 - Forum for enhanced user engagement -> explore other suitable plugin as there are too many unnecessary details on the current extension
 
-- Separate the `strategies` of the website from About page and link to a `sponsorship` page or button
+- Separate the `strategies` from About page and link to a `sponsorship` page or button
 
 ## Deployment Workflow
 
