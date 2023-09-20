@@ -12,12 +12,24 @@ Intuitive
 - The theme utilizes large font sizes to ensure the website is readable by the targeted audience.
 
 Custom logo
-- A personalized logo that can be incorporated into the header. It can be configured and tailored via the site identity settings.
+- A personalized logo that can be incorporated into the header. It can be customized under the theme's appearance in templates section.
+	- Navigate to templates > pages 
+	- Click on edit button
+	- Locate the block containing logo 
+	- Add or replace the the logo and adjust settings
 
 Page Customization
-- Ability to modify the layout, structure, and visual elements of a page.
+- Ability to modify the layout, structure, and visual elements of a page. 
+   - Featured Image (E.g. Home page)
+      - Edit home page > document overview > list view > gallery > image
+	   - Edit the existing featured image > replace > upload
+   - Block layout (E.g. About page)
+      - Add new column block > highlight existing > more button > duplicate
+	   - Customise block settings
 - Customize the visual style of a page, such as colors, fonts, typography, and spacing.
-- Add, remove, or reorganize content on a page.
+   - Edit custom style.css file 
+	- Identify the CSS selectors (E.g. .wp-site-blocks header)
+	- Change the background color
 
 Header Customization
 - A main navigation menu can be placed in the header location suitable for intended audience.
