@@ -39,7 +39,7 @@ Header Customization
 Footer Customization
 - Incorporated search function and social media integration.
    - Ability to change social media name to brand icon
-      - Download and upload Facebook and Instagram icons
+      - Install and activate Social Media Share Buttons & Social Sharing Icons plugin
 	   - From theme's appearance > templates > pages > edit icon
 	   - Locate footer > Delete name > upload downloaded icons
 
