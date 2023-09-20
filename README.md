@@ -52,8 +52,8 @@ Login and Register Buttons
 
 Additional Site Pages
 - Newsletter -> currently using Forminator plugin that enables Newsletter subscription but can use a better plugin to incorporate actual Newsletter pages
-[!NOTE]
-Ongoing testing with newsletter creation and verification if subscribers are receiveing the notification
+> [!NOTE]
+> Ongoing testing with newsletter creation and verification if subscribers are receiveing the notification
 
 - Forum for enhanced user engagement -> explore other suitable plugin as there are too many unnecessary details on the current extension
 
