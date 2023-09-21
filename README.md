@@ -71,7 +71,7 @@ Additional Site Pages
 - Website Migration: `WPVivid Plugin`
 
 ### Project Management Board
-Trello - collaboration tool that uses a system of boards, lists, and cards to help the team organize and manage tasks and projects.
+`Trello` - collaboration tool that uses a system of boards, lists, and cards to help the team organize and manage tasks and projects.
 
 Register to [Trello](https://trello.com/home) and join the team to get access to the board detailing the project/s.
 
@@ -86,18 +86,17 @@ Register to [Trello](https://trello.com/home) and join the team to get access to
 ### Version Control
 Version control workflow is in `Github` which involves tracking and managing changes to the code and collaborating with others effectively. Currently using `master` branch to automate site changes from local to production environment.
 
-### General Workflow
-1. Local Development Environment Setup (Windows Only)
-- Varying Vagrant Vagrants is primarily chosen due to its preconfigured services such as Nginx, PHP, and MariaDB (or MySQL) that are commonly used in WordPress hosting environments. These services are set up to work optimally with WordPress.
-   - Prerequisite Installations: Vagrant, Git, Virtual Box 
-   - Grab a copy of VVV using git
-      - Open a command prompt, and enter the following command:
-      - `git clone -b stable https://github.com/Varying-Vagrant-Vagrants/VVV.git %systemdrive%%homepath%/vvv-local cd %systemdrive%%homepath%/vvv-local`
-      - `vagrant plugin install --local`
-      - Start VVV by opening a terminal
-      - Change to the VVV folder `cd %systemdrive%%homepath%/vvv-local`
-      - Run `vagrant up`
-   - Add a new site in `config/config.yml` and run `vagrant up --provision` to reprovision
+## Getting Started
+
+### Step I: Setup local environment
+1. Install: [Vagrant](https://www.vagrantup.com/), [Git](https://git-scm.com/downloads), and [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
+2. Open a command prompt
+3. `git clone -b stable https://github.com/Varying-Vagrant-Vagrants/VVV.git %systemdrive%%homepath%/vvv-local cd %systemdrive%%homepath%/vvv-local`
+4. `vagrant plugin install --local`
+5. `cd %systemdrive%%homepath%/vvv-local`
+6. `vagrant up`
+7. Launch IDE and open config/config.yml
+8. Add new site using the markdown below:
    ```
       sites:
          u3a:
@@ -105,32 +104,45 @@ Version control workflow is in `Github` which involves tracking and managing cha
             repo: https://github.com/Varying-Vagrant-Vagrants/custom-site-template.git
             hosts:
                - u3a.test
+9. `vagrant up --provision`
+10. Launch Dashboard from a web browser using this link: http://vvv.test/
+11. Click the new website: http://u3a.test
 
-- Run `vagrant up --provision`
-- Launch [Dashboard](http://vvv.test) from a web broser
-- Websites will be in the `www` folder
+### Step II: Website and database migration -> production to local environment
+1. Install and activate WpVivid plugin in local 
+2. Open WpVivid Back up found in the left panel
+3. On the Source (Production) Website
+   1. Click Backup & Restore tab 
+	2. Click on the Backup Now button
+	3. Download the generated backup file
+4. On the Target (Local) Website
+   1. Click Backup & Restore tab
+	2. Click on the Upload tab
+	3. Select the downloaded backup file
+	4. Click Backups tab
+	5. Click Restore icon
+	6. Click Restore button and wait for process to complete
 
-Visit the official website in [Varying Vagrant Vagrants](https://varyingvagrantvagrants.org/) for detailed instructions of VVV installation for MAC users.
+### Step III: Setup version control with local environment
+1. Open a command prompt
+2. `cd <path-to-themes-folder>`
+3. `git clone https://github.com/VanessaCalimag/cp3402-adjunct-site.git`
+4. `cd <path-to-theme-name-folder>`
+5. `git branch` - will only display master branch as this the only branch currently setup
+6. `git log --oneline` to explore repository's history
+> [!Note]
+> `git fetch` `git pull` if working directory log needs to be updated
 
-2. Website Migration using WPVivid Plugin
-- Note: WPVivid Plugin must be installed and activated on both local and production WordPress site
-   - On the Source (Production) Website:
-      - From the `Backup & Restore` tab click on the `Backup Now` button 
-      - Download the generated backup file
-   - On the Target (Local) Website:
-      - From the `Backup & Restore` tab, click on the `Upload` tab
-      - Select the downloaded backup file
-      - Click `Backups` tab
-      - Click `Restore` icon
-      - Click `Restore` button and wait for process to complete
-
-3. Version Control
-- Version control workflow in Github involves tracking and managing changes to the code and collaborating with others effectively.
-   - Initialize a version control system (e.g., Git) within your VVV project directory if it's not already initialized. 
-      - Run the following commands to clone the repository `git clone https://github.com/VanessaCalimag/cp3402-adjunct-site.git`
-   - To commit your changes using Git:
-      - `git add .`
-      - `git commit -m "Description of changes"`
+### Step IV: Child theme development
+1. Launch Visual Studio Code
+2. Click File and open folder 
+3. Locate the child theme folder from local directory
+4. Modify required changes on the theme
+5. Save changes
+6. `git add .` or `git add (filename and extension)` to add a change in the working directory
+7. `git commit -m "Description of changes"`
+8. `git push` to add changes in GitHub repository
+9. Changes should automatically flow directly from the repository to production site
 
 ### Automatic Workflow/Deployment
 - GitHub Actions leveraged secret management for secure handling of sensitive information, 
