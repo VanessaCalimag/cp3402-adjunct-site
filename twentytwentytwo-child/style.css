@@ -5,7 +5,7 @@ Description: This is a child theme of 2022
 Author: Vanessa Calimag
 Author URI: http://u3a.test/
 Template: twentytwentytwo
-Version: 0.3
+Version: 0.4
 */
 
 @import url("../twentytwentytwo/style.css");
@@ -68,7 +68,4 @@ Version: 0.3
 .bp-opening-hours {
     max-width: 40em;
 }
-
-body { background: red; }
-nav {background: yellow;}
 
