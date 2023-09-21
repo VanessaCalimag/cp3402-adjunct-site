@@ -70,6 +70,22 @@ Additional Site Pages
 - Deployment Workflow: `GitHub Actions`
 - Website Migration: `WPVivid Plugin`
 
+### Project Management Board
+Trello - collaboration tool that uses a system of boards, lists, and cards to help the team organize and manage tasks and projects.
+
+Register to [Trello](https://trello.com/home) and join the team to get access to the board detailing the project/s.
+
+### Local Environment
+`Varying Vagrant Vagrants` is primarily chosen due to its preconfigured services such as Nginx, PHP, and MariaDB (or MySQL) that are commonly used in WordPress hosting environments. These services are set up to work optimally with WordPress.
+
+### Website Migration Tool
+`WpVivid` is a WordPress backup and migration plugin that simplifies and automates website backup, restoration, and migration tasks.
+> [!Note]
+> WPVivid Plugin must be installed and activated on both local and production WordPress site
+
+### Version Control
+Version control workflow is in `Github` which involves tracking and managing changes to the code and collaborating with others effectively. Currently using `master` branch to automate site changes from local to production environment.
+
 ### General Workflow
 1. Local Development Environment Setup (Windows Only)
 - Varying Vagrant Vagrants is primarily chosen due to its preconfigured services such as Nginx, PHP, and MariaDB (or MySQL) that are commonly used in WordPress hosting environments. These services are set up to work optimally with WordPress.
@@ -224,7 +240,3 @@ Set up:
    - Launch the instance using `vagrant up` in command prompt
    - Login to the instance using `vagrant ssh`
 
-### Project Management Board
-Trello - collaboration tool that uses a system of boards, lists, and cards to help the team organize and manage tasks and projects.
-
-Register to [Trello](https://trello.com/home) and join the team to get access to the board detailing the project/s.
